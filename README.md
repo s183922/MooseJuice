@@ -9,7 +9,7 @@ $ python3 -m pip install --user virtualenv
 Navigate to or create an empty repository.
 Create a virtual enviroment:
 
-$ python3 -m venv env
+$ python3 -m venv env    (if not working try python -m venv env)
 
 Activate the enviroment:
 
