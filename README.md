@@ -21,12 +21,12 @@ $ source env/bin/activate
 $ git clone https://github.com/s183922/MooseJuice.git
 
 ### Update the enviroment
+Navigate to the cloned git repository MooseJuice and update the env:
 
-$ python -m pip install -r MooseJuice/requirements.txt
+$ python -m pip install -r requirements.txt
 
 ### Start the server
-Navigate to the cloned git repository MooseJuice
-Open a python terminal:
+In the git repository open a python terminal:
 
 $ python
 
