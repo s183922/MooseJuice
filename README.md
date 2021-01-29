@@ -39,6 +39,7 @@ $ python
 in python terminal:
 
 \>> run.py
+
 in command prompt:
 
 $ python MooseJuice/run.py
