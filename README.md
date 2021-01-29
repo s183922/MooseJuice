@@ -3,13 +3,16 @@
 
 ### Fix the enviroment
 Install the python virtual enviroment package with pip:
+
 $ python3 -m pip install --user virtualenv
 
 Navigate to or create an empty repository.
 Create a virtual enviroment:
+
 $ python3 -m venv env
 
 Activate the enviroment:
+
 $ source env/bin/activate
 
 
@@ -24,12 +27,18 @@ $ python -m pip install -r MooseJuice/requirements.txt
 ### Start the server
 Navigate to the cloned git repository MooseJuice
 Open a python terminal:
+
 $ python
+
 \>> from MooseJuice import db
->> db.drop_all()   # Deletes existing database
->> db.create_all() # Initialise new database
+
+\>> db.drop_all()   # Deletes existing database
+
+\>> db.create_all() # Initialise new database
 
 in python terminal:
->> run.py
+
+\>> run.py
 in command prompt:
+
 $ python MooseJuice/run.py
