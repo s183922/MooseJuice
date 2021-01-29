@@ -25,7 +25,7 @@ $ python -m pip install -r MooseJuice/requirements.txt
 Navigate to the cloned git repository MooseJuice
 Open a python terminal:
 $ python
-::> from MooseJuice import db
+-> from MooseJuice import db
 >> db.drop_all()   # Deletes existing database
 >> db.create_all() # Initialise new database
 
