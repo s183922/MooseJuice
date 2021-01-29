@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <form method="post" action="">
+    <legend class="border-bottom mb-4">Welcome!</legend>
+    
+    <div class="row">
+
+        
+        <div class="col-sm-12">
+            {{ form.hidden_tag() }}  
+            <h3>Login below</h3>
+            
+            <div class="form-group">
+            <div class="row-xs-6">
+                {{ form.username.label(class="form-control-label") }}
+            </div>
+            {% if form.username.errors %}
+                {{form.username(class="form-control form-control-lg is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.username.errors %}
+                        <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="row-xs-6">
+                    {{ form.username(class="form-control-label form-control-lg") }}
+                </div>
+            {% endif %}
+            </div>
+            
+
+            <div class="form-group">
+            <div class="row-xs-6">
+                {{ form.password.label(class="form-control-label") }}
+            </div>
+            {% if form.password.errors %}
+                {{form.password(class="form-control form-control-lg is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                        <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.password(class="form-control-label form-control-lg") }}
+            {% endif %}
+            </div>
+
+        <div class="row-xs-6">
+            <div class="form-group">
+                {{form.remember_me}} {{form.remember_me.label}}
+            </div>
+        </div>    
+
+       
+        <div class="row-xs-6">
+            <div class="form-group">
+                
+                {{ form.submit(class="btn btn-outline-info") }}  
+            </div>  
+        </div>
+    </div>
+    </div>
+    </form> 
+    
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Haven't moved in yet? Do so now! <a class="ml-2" href="{{url_for('register')}}">Move in</a>
+        </small>
+    </div>
+{% endblock content %}

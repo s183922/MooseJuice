@@ -1,0 +1,136 @@
+
+
+     
+<ul class="nav nav-pills pb-2 pt-1 justify-content-center" id="pills-tab" role="tablist" style="width: 100%">
+    <li class="nav-item">
+    <a class="nav-link  {{Tab.date[0]}}" style="width:100%" id="daily-tab" data-toggle="pill" href="#daily" role="tab" aria-controls="daily" aria-selected="true">Daily</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link {{Tab.week[0]}}" id="weekly-tab" data-toggle="pill" href="#weekly" role="tab" aria-controls="weekly" aria-selected="false">Weekly</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link {{Tab.month[0]}}" id="monthly-tab" data-toggle="pill" href="#monthly" role="tab" aria-controls="monthly" aria-selected="false">Monthly</a>
+    </li>
+</ul>
+
+<div class="col-sm-5 center-block  d-flex justify-content-center">
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade  {{Tab.date[1]}}" id="daily" role="tabpanel" aria-labelledby="daily-tab">
+            <form method="post"  action="{{url_for('account')}}">
+                {{form4.hidden_tag()}}
+                {{form4.updateTable("Date", form4.date.data)}}
+                {{form4.date(class="btn btn-primary", style="width: 100%", onchange="submit()")}}
+                <div class="container">
+                <div class="btn-group pt-3">
+                    <div class="col-xs-6">
+                        <button class="btn btn-success rounded-circle pr-10" style="width:110px; height: 110px"disabled>
+                            <dt>Beers</dt>
+                            {{form4.beers}}
+                        </button>
+                        <div class="row-xs-6 pt-3">
+                            <button class="btn btn-info rounded-circle pr-10" style="width:110px; height: 110px"disabled>
+                                <dt>Money Transfered</dt>
+                                {{form4.transfer}}
+                            </button>
+                        </div>
+                    </div>
+                
+                    <div class="col-xs-6 pl-3">
+                        <button class="btn btn-warning rounded-circle" style="width:110px; height: 110px"disabled>
+                            <dt class="text-white">Sodas</dt>
+                            <div class="text-white">{{form4.sodas}}</div>
+                        </button>
+                        <div class="row-xs-6 pt-3">
+                            <button class="btn btn-danger rounded-circle pr-10" style="width:110px; height: 110px"disabled>
+                                <dt>Money well spend</dt>
+                            {{form4.amount}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="tab-pane fade {{Tab.week[1]}}" id="weekly" role="tabpanel" aria-labelledby="weekly-tab">
+            <form method="post">
+                {{form4.hidden_tag()}}
+                {{form4.updateTable("Week", form4.week.data)}}
+                {{form4.week(class="btn btn-primary", style="width: 100%", onchange="submit()")}}
+                <div class="container">
+                    <div class="btn-group pt-3">
+                        <div class="col-xs-6">
+                            <button class="btn btn-success rounded-circle pr-10" style="width:110px; height: 110px"disabled>
+                                <dt>Beers</dt>
+                                {{form4.beers}}
+                            </button>
+                            <div class="row-xs-6 pt-3">
+                                <button class="btn btn-info rounded-circle pr-10" style="width:110px; height: 110px"disabled>
+                                    <dt>Money Transfered</dt>
+                                    {{form4.transfer}}
+                                </button>
+                            </div>
+                        </div>
+                    
+                        <div class="col-xs-6 pl-3">
+                            <button class="btn btn-warning rounded-circle" style="width:110px; height: 110px"disabled>
+                                <dt class="text-white">Sodas</dt>
+                                <div class="text-white">{{form4.sodas}}</div>
+                            </button>
+                            <div class="row-xs-6 pt-3">
+                                <button class="btn btn-danger rounded-circle pr-10" style="width:110px; height: 110px"disabled>
+                                    <dt>Money well spend</dt>
+                                {{form4.amount}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                
+            </form>
+        </div>
+
+        <div class="tab-pane fade {{Tab.month[1]}}" id="monthly" role="tabpanel" aria-labelledby="monthly-tab">
+            <form method="post" name="submit">
+                {{form4.hidden_tag()}}
+                {{form4.updateTable("Month", form4.month.data)}}
+                {{form4.month(class="btn btn-primary", style="width: 100%", onchange="submit()")}}
+                <div class="container">
+                    <div class="btn-group pt-3">
+                        <div class="col-xs-6">
+                            <button class="btn btn-success rounded-circle pr-10" style="width:110px; height: 110px"disabled>
+                                <dt>Beers</dt>
+                                {{form4.beers}}
+                            </button>
+                            <div class="row-xs-6 pt-3">
+                                <button class="btn btn-info rounded-circle pr-10" style="width:110px; height: 110px"disabled>
+                                    <dt>Money Transfered</dt>
+                                    {{form4.transfer}}
+                                </button>
+                            </div>
+                        </div>
+                
+                        <div class="col-xs-6 pl-3">
+                            <button class="btn btn-warning rounded-circle" style="width:110px; height: 110px"disabled>
+                                <dt class="text-white">Sodas</dt>
+                                <div class="text-white">{{form4.sodas}}</div>
+                            </button>
+                            <div class="row-xs-6 pt-3">
+                                <button class="btn btn-danger rounded-circle pr-10" style="width:110px; height: 110px"disabled>
+                                    <dt>Money well spend</dt>
+                                {{form4.amount}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</div>
+
+
+
+

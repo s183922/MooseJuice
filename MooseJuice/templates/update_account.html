@@ -1,0 +1,119 @@
+<div class="container border-bottom">
+<div class="row pt-2">
+    
+    
+    <div class="col-sm-6">
+        <h5>Update Username</h5>
+        <form method="post" action="">
+            {{ form2.hidden_tag() }}
+                       
+            <div class="form-group">
+                <div class="row-xs-6">
+                    {{ form2.username.label(class="form-control-label") }}
+                </div>
+                {% if form2.username.errors and form2.submit.data %}
+                    {{form2.username(class="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form2.username.errors %}
+                            <span>{{error}}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="row-xs-6">
+                        {{ form2.username(class="form-control-label form-control-lg") }}
+                    </div>
+                {% endif %}
+            </div>
+                
+        
+            <div class="form-group">
+                <div class="row-xs-6">
+                    {{ form2.password.label(class="form-control-label") }}
+                </div>
+                {% if form2.password.errors and form2.submit.data %}
+                    {{form2.password(class="form-control form2-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form2.password.errors %}
+                            <span>{{error}}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form2.password(class="form-control-label form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form2.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>          
+    </div>
+    <div class="col-sm-6">
+        <form method="post">
+            {{ form3.hidden_tag() }}
+            <h5>Update Password</h5>
+
+            <div class="form-group">
+                <div class="row-xs-6">
+                    {{ form3.password1.label(class="form-control-label") }}
+                </div>
+                {% if form3.password1.errors and form3.submit1.data %}
+                    {{form3.password1(class="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form3.password1.errors %}
+                            <span>{{error}}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form3.password1(class="form-control-label form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <div class="row-xs-6">
+                    {{ form3.new_password.label(class="form-control-label") }}
+                </div>
+                {% if form3.new_password.errors and form3.submit1.data %}
+                    {{form3.new_password(class="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form2.new_password.errors %}
+                            <span>{{error}}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form3.new_password(class="form-control-label form-control-lg") }}
+                {% endif %}
+            </div>
+
+
+            <div class="form-group">
+                <div class="row-xs-6">
+                    {{ form3.confirm_password.label(class="form-control-label") }}
+                </div>
+                {% if form3.confirm_password.errors and form3.submit1.data %}
+                    {{form3.confirm_password(class="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form3.confirm_password.errors %}
+                            <span>{{error}}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form3.confirm_password(class="form-control-label form-control-lg") }}
+                {% endif %}
+                
+            </div>
+
+            <div class="form-group">
+                {{ form3.submit1(class="btn btn-outline-info") }}
+            </div>
+            
+        </form>
+    </div>
+</div>
+</div>
+<div class="col-sm-12">
+    <small class="text-muted">
+        Moving out? <a class="ml-2 text-danger text-muted" href="{{url_for('moving_out')}}"> Click here </a>
+    </small>
+</div>
+</div>
+
+

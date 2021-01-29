@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="col-sm-12">
+        <div class="media">
+            <img class="rounded-circle account-img d-none d-md-block" src="{{image_file}}">
+            <div class="media-body">
+                <h2 class="account-heading">{{current_user.username}}</h2>
+                <p class="text-secondary">{{room}}</p>
+                <!-- <a class="text-secondary" href="/update_account"><button type="button" class="btn btn-outline-primary" >Update account info</button></a> -->
+            </div>
+        </div>
+</div>
+
+<div class="container pt-2">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link {{Tab.balance[0]}}" id="balance-tab" data-toggle="tab" href="#balance" role="tab" aria-controls="balance" aria-selected="true">Balance</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link {{Tab.post[0]}}" id="post-tab" data-toggle="tab" href="#post" role="tab" aria-controls="post" aria-selected="false">Postings</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link {{Tab.update[0]}}" id="update-tab" data-toggle="tab" href="#update" role="tab" aria-controls="update" aria-selected="false">Info</a>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade {{Tab.balance[1]}} " id="balance" role="tabpanel" aria-labelledby="balance-tab">
+           {%include 'balance.html' %}
+        </div>
+        <div class="tab-pane fade {{Tab.post[1]}}" id="post" role="tabpanel" aria-labelledby="update-tab">
+            
+          {% include 'posts.html' %}
+      </div>
+        <div class="tab-pane fade {{Tab.update[1]}}" id="update" role="tabpanel" aria-labelledby="update-tab">
+            
+            {% include 'update_account.html' %}
+        </div>
+      </div>
+</div>
+    
+
+
+{% endblock content %}

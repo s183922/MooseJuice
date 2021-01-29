@@ -1,0 +1,43 @@
+<div class="row pt-2">
+    <div class="col-sm-4">
+        <div class="row-sm-2">
+            <h5>Your account balance</h5>
+        </div>
+        <div class="row-sm-4">
+            <div class="alert alert-{{ category }}" style="width: 90%;">
+                <div class="text-center">
+                    <dt >{{user_balance}} DKK </dt>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form method="post" action="{{url_for('account')}}">
+    {{ form.hidden_tag() }} 
+    <div class="row">
+        <div class="col-sm-12">
+            <h5>Transfer money to your account</h5>
+            <p>To transfer money to your Moose Account you have to manually make a bank transfer to the Moose Beer Account: <dt>{{account_number}}</dt> </p>
+            <p>Do so, enter the transfered amount below and if the transfer is accepted by the Beer responsible person your account balance will be updated. </p>
+            <dt>{{form.transfer.label}}:</dt>
+            {% if form.transfer.errors and form.submit.data%}
+            {{form.transfer(class="form-control form-control-lg is-invalid")}}
+            <div class="invalid-feedback">
+                {% for error in form.transfer .errors %}
+                    <span>{{error}}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="row-xs-6">
+                {{form.transfer(class="form-control", style="width: 50%")}}
+            </div>
+        {% endif %}
+            
+            <div class="pt-2 pb-2">
+                {{form.submit(class="btn btn-outline-primary pt-2" )}}
+            </div>
+        </div>
+    </div>
+</form>
+

@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="col-sm-12">
+    <div class="row-xs-12">
+        <div class="media">
+            <img class="rounded-circle account-img" src="{{image_file}}">
+            <div class="media-body">
+                <h2 class="account-heading">{{current_user.username}}</h2>
+                <p class="text-secondary">Room {{current_user.room}}</p>
+                <a class="text-secondary" href="/account"><button type="button" class="btn btn-outline-primary" >Back to account</button></a>
+            </div>
+        
+    </div>
+    <div class="container">
+        <legend class="border-bottom mb-4">Moving out... Makes me sad...</legend>
+        <p>If you are moving out please fill out the below form and clear any outstanding you might have with the beer responsible person.</p>
+
+        <h5>Your account balance</h5>
+
+        <div class="alert alert-success" style="width: 90%;">
+            <div class="text-center">
+                <dt >{{user_balance}} DKK </dt>
+            </div>
+        </div>
+    
+        <form method="post" action="">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{form.moveout.label}} {{form.moveout}}
+                
+            </div>
+            {{form.submit(class="btn btn-outline-info")}}
+            
+        </form>
+    </div>
+</div>
+{% endblock content %}

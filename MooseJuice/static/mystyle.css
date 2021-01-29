@@ -1,0 +1,56 @@
+.progress-bar-vertical {
+    width: 20px;
+    min-height: 200px;
+    margin-right: 20px;
+    background: #d0cece;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-end;
+    -webkit-align-items: flex-end
+}
+
+.progress-bar-vertical .progress-bar {
+    width: 100%;
+    height: 0;
+    -webkit-transition: height 0.6s ease;
+    -o-transition: height 0.6s ease;
+    transition: height 0.6s ease
+}
+
+.container_row{
+    display: grid;
+  }
+  
+  .layer1, .layer2{
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  .layer1 span{
+    color: #fff;
+    background: #000cf6;
+  }
+  
+  .layer2{
+    background: rgba(255, 0, 0, 0.4);
+  }
+
+  .parent {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  .image1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 1px red solid;
+  }
+  .image2 {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    border: 1px green solid;
+  }

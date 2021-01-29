@@ -1,0 +1,152 @@
+{% extends "layout.html" %}
+{% block welcome %}
+{% if not current_user.is_authenticated %}
+    
+    <div class="col-md-12">
+     <h1>Welcome to the Moosey Juicy Webpage!</h1>
+    </div>
+     
+{% endif %}
+{%endblock%}
+{% block content %}
+
+
+<div class="background-image d-none d-md-block", style="width: 100%;">
+    <img class="img-fluid" src="{{image_file}}"> 
+</div>
+
+
+{% endblock content %}
+
+{% block sidebar %}
+{% if not current_user.is_authenticated %}
+<div class="col-md-4">
+    <div class="content-section">
+        <h3>Actions</h3>
+        
+        <p class='text-muted'> Please Login to enjoy </p>
+        
+        <div class="form-group">
+            
+            {{form.amount_beer(type="number", style="width: 100%;", disabled=True)}}
+         
+        </div>  
+        
+        <div class="form-group pt-3">
+            {{form.amount_soda(type="number", style="width: 100%;", disabled=True)}}
+        </div> 
+
+        <div class="form-group pt-3">
+            <div class="pt-2">
+                {{form.submit(type="button", class="btn btn-warning", style="width: 100%", disabled=True)}}
+            </div>
+        </div>
+    </div> 
+</div>       
+{% else %}
+<div class="col-md-4">
+    <div class="content-section">
+        <h3>Actions</h3>
+        
+        <p class='text-muted'> Have fun. Drink responsibly. </p>
+        <form method="post" action="{{url_for('home')}}">
+        {{ form.hidden_tag() }} 
+            
+        
+            <dt>Beer ({{beer_price}} kr.)</dt>
+            <div class="col-xs-12">
+                {% if form.amount_beer.errors and form.amount_beer.data %}
+                <div class="btn-group pb-2" style="width:100px">
+                    <button class="btn btn-primary" onclick="decrease('beer')" style="width:20%">-</button>
+                    
+                        {{form.amount_beer(class="form-control form-control is-invalid", style="width:100%")}}
+                       
+                    
+                    <button class="btn btn-primary"  onclick="increase('beer')" style="width:15%">+</button>
+                </div>
+               
+                <div class="text-danger text-sm">
+                    <p>Not a valid integer value. Number must be at least 0.</p>
+                </div>
+                          
+               
+                {% else %}
+                    <div class="btn-group pb-2" style="width:100%">
+                        <button class="btn btn-primary" onclick="decrease('beer')" style="width:15%">-</button>
+                        {{form.amount_beer(type="number", class="text-center", id="beer", style="width: 100%;", disabled=False, min="0") }}
+                        <button class="btn btn-primary"  onclick="increase('beer')" style="width:15%; ">+</button>
+                    </div>
+                {% endif %}
+    
+    
+            </div> 
+        <dt>Soda ({{soda_price}} kr.)</dt>
+        <div class="col-xs-12">
+            {% if form.amount_soda.errors and form.amount_soda.data %}
+            <div class="btn-group pb-2">
+                <button class="btn btn-primary" onclick="decrease('soda')" style="width:15%">-</button>
+                
+                    {{form.amount_soda(class="form-control form-control is-invalid", style="width:100%")}}
+                   
+                
+                <button class="btn btn-primary"  onclick="increase('soda')" style="width:15%">+</button>
+            </div>
+           
+            <div class="text-danger text-sm">
+                <p>Not a valid integer value. Number must be at least 0.</p>
+            </div>
+                      
+           
+            {% else %}
+                <div class="btn-group pb-2" style="width:100%">
+                    <button class="btn btn-primary" onclick="decrease('soda')" style="width:15%">-</button>
+                    {{form.amount_soda(type="number", id="soda",  class="text-center", style="width: 100%;", disabled=False, min="0") }}
+                    <button class="btn btn-primary"  onclick="increase('soda')" style="width:15%">+</button>
+                </div>
+            {% endif %}
+
+
+        </div>      
+        </div>
+            {{form.submit(type="submit", class="btn btn-warning", style="width: 100%; heigth: 100%", disabled=False)}}
+            {% if form.submit.data and not ((form.amount_soda.data and form.amount_soda.data != "0") or (form.amount_beer.data and form.amount_beer.data != "0") )%}
+            <div class="text-danger text-sm">
+                <p>Please choose something to drink first ... </p>
+            </div>
+            {% endif %}
+        </div>
+        </form> 
+    </div> 
+</div>  
+
+<script>
+    function decrease(id){
+        if (document.getElementById(id).value == ""){
+            document.getElementById(id).value = "0"
+        }
+        else if (parseInt(document.getElementById(id).value) > 0){
+            document.getElementById(id).value = parseInt(document.getElementById(id).value) -1
+        }
+        
+        
+
+        
+    }
+    function increase(id){
+        if (document.getElementById(id).value == ""){
+            document.getElementById(id).value = 0
+        }
+        
+        document.getElementById(id).value = parseInt(document.getElementById(id).value) +1
+        
+    }
+</script>
+
+
+
+{% endif %}   
+{% endblock sidebar %}
+
+
+
+
