@@ -123,6 +123,6 @@ class TableForm(FlaskForm):
 class GoalForm(FlaskForm):
     item = StringField("Name of Goal", validators=[DataRequired()])
     price = FloatField("Price of Goal", validators=[DataRequired(), NumberRange(min=0)])
-    image = FileField("Upload image", validators=[FileAllowed(['jpg', 'png'])])
+    image = FileField("Upload image", validators=[FileAllowed(['jpg', 'png', 'jpeg'])])
 
     submit = SubmitField("Add new goal")
