@@ -16,7 +16,7 @@ def before_first_request():
         db.session.add(admin_user)
         db.session.commit()
 
-        first_post = Post(post_type = "First commit", comment = "First commit", moose_balance=0, user_id=admin_user.id)
+        first_post = Post(post_type = "First commit", moose_balance=0, user_id=admin_user.id)
         db.session.add(first_post)
         db.session.commit()
 
@@ -62,7 +62,7 @@ def home():
     Tab.updateTab("balance")
     Tab.updateTab("date")
     updatePosts()
-    image_file = url_for('static', filename = 'profile_pics/default.jpg' )
+    image_file = url_for('static', filename = 'uploads/default.jpg' )
     form = PurchaseForm()
     room = ""
     beer_price, soda_price = getPrices()
@@ -136,7 +136,7 @@ def account():
     room = getRoom(current_user)
     category, user_balance = getUserbalance(current_user)
     # user = User.query.filter_by(username = form2.username.data).first()
-    image_file = url_for('static', filename = 'profile_pics/default.jpg')
+    image_file = url_for('static', filename = 'uploads/default.jpg')
 
     table = getDF(current_user)
     form4 = TableForm(table)
@@ -249,7 +249,7 @@ def update_account():
         form.password.data = '*******'
     elif not bcrypt.check_password_hash(user.password, form.password.data):
         flash("Wrong password", 'danger')
-    image_file = url_for('static', filename = 'profile_pics/default.jpg')
+    image_file = url_for('static', filename = 'uploads/default.jpg')
     return render_template('update_account.html', title = 'Update Account', image_file = image_file, form = form, room = room)
 
 
@@ -260,7 +260,7 @@ def moving_out():
     form = MoveOutForm()
     room = getRoom(current_user)
     category, user_balance = getUserbalance(current_user)
-    image_file = url_for('static', filename = 'profile_pics/default.jpg')
+    image_file = url_for('static', filename = 'uploads/default.jpg')
 
     if form.validate_on_submit():
         flash("You have moved out. See you soon!", 'success')
@@ -298,7 +298,7 @@ def goals():
     updateProgress()
     form = GoalForm()
     goals = Goals.query.all()
-    image_file = url_for('static', filename = 'profile_pics/default.jpg')
+    
     goals = [("active" if goal.id == 1 else "",
              goal,
              "success" if goal.progress == 100 else "warning",

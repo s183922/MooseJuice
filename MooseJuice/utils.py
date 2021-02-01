@@ -187,21 +187,33 @@ def updateProgress():
     
     db.session.commit()
 def updatePosts(stats = False):
-    post = Post.query.all()
+    
     post_table = getDFPost()
     admin_post = post_table[post_table["Status"] == 'admin'][1:]
     other_post = post_table[post_table["Status"] != 'admin']
+
+    posts = Post.query.all()
+    edits = list(filter(None, [(i, P) if (P.comment != None and "CHECKED" not in P.comment) else None for i,P in enumerate(posts)]))
     if not stats:
-        for i in admin_post.index:
-            amount = admin_post["Amount"][i]
-            p_type = admin_post["Type"][i]
-            if post[i].moose_balance == 0:
-                if p_type == "Transfer":
-                    post[i].moose_balance = post[i-1].moose_balance + amount
+        for i, p in edits:
+            if p.author.status != 'admin':
+                latest = list(filter(None, [user_p if user_p.date < p.date else None for user_p in p.author.posts]))[-1]
+                if p.post_type == 'Transfer':
+                    p.user_balance = latest.user_balance + p.amount
+                    p.moose_balance = posts[i-1].moose_balance + p.amount
                 else:
-                    post[i].moose_balance = post[i-1].moose_balance - amount
-            
-                db.session.commit()
+                    p.user_balance = latest.user_balance  - p.amount
+                    p.moose_balance = posts[i-1].moose_balance
+            else:
+                if p.post_type == 'Transfer':
+                    p.moose_balance = posts[i-1].moose_balance + p.amount
+                else:
+                    p.moose_balance = posts[i-1].moose_balance - p.amount
+
+            p.comment += " CHECKED"
+
+        db.session.commit()
+
     else:  
         beers = admin_post[["Beers", "Sodas"]].sum()["Beers"] - other_post[["Beers", "Sodas"]].sum()["Beers"]
         sodas = admin_post[["Beers", "Sodas"]].sum()["Sodas"] - other_post[["Beers", "Sodas"]].sum()["Sodas"]
